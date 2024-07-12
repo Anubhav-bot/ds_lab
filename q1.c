@@ -15,7 +15,7 @@ int *getUnion(int *a, int len_a, int *b, int len_b) {
         for(j = 0; j < i; j++) {
             if(a[i] == uni[j]) break;
         }
-        if(i == j) uni[i+1] = a[i]; //offset to store length in first cell
+        if(i == j) uni[i+1] = a[i]; //offset to store length in first [0th] cell
     }
     i++;
 
