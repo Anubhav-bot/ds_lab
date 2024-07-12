@@ -80,31 +80,35 @@ int main() {
     int a[5] = {2, 3, 4, 6, 8};
     int b[3] = {3, 6, 9};
 
+    int len_u = sizeof(u) / sizeof(u[0]);
+    int len_a = sizeof(a) / sizeof(a[0]);
+    int len_b = sizeof(b) / sizeof(b[0]);
+
     printf("U: ");
-    display(u, 10, SEPARATE_LENGTH);
+    display(u, len_u, SEPARATE_LENGTH);
 
     printf("A: ");
-    display(a, 5, SEPARATE_LENGTH);
+    display(a, len_a, SEPARATE_LENGTH);
 
     printf("B: ");
-    display(b, 3, SEPARATE_LENGTH);
+    display(b, len_b, SEPARATE_LENGTH);
 
-    int* uni = getUnion(a, 5, b, 3);
+    int* uni = getUnion(a, len_a, b, len_b);
     printf("\nUnion: [len = %d]\n", uni[0]-1);
     display(uni, uni[0], INTEGRATED_LENGTH);
     free(uni);
 
-    int* inter = getIntersection(a, 5, b, 3);
+    int* inter = getIntersection(a, len_a, b, len_b);
     printf("\nIntersection: [len = %d]\n", inter[0]-1);
     display(inter, inter[0], INTEGRATED_LENGTH);
     free(inter);
 
-    int* diffA = getDifference(u, 10, a, 5);
+    int* diffA = getDifference(u, len_u, a, len_a);
     printf("\nDifference of A: [len = %d]\n", diffA[0]-1);
     display(diffA, diffA[0], INTEGRATED_LENGTH);
     free(diffA);
 
-    int* diffB = getDifference(u, 10, b, 3);
+    int* diffB = getDifference(u, len_u, b, len_a);
     printf("\nDifference of B: [len = %d]\n", diffB[0]-1);
     display(diffB, diffB[0], INTEGRATED_LENGTH);
     free(diffB);
